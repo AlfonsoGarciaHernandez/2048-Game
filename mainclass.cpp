@@ -7,6 +7,7 @@
 MainClass::MainClass(QObject *parent) : QObject(parent){
    srand (time(NULL));
    counter = 0;
+   mouv = false;
    NewGame();
 }
 
@@ -27,9 +28,9 @@ void MainClass::key_up(){
         CombineRow(1,2);
         CombineRow(2,3);
     }
+    Key_Pressed();
     emit MatrixChanged();
     emit ColorChanged();
-    Key_Pressed();
 }
 
 void MainClass::key_down(){
@@ -38,9 +39,9 @@ void MainClass::key_down(){
         CombineRow(2,1);
         CombineRow(1,0);
     }
+    Key_Pressed();
     emit MatrixChanged();
     emit ColorChanged();
-    Key_Pressed();
 }
 
 void MainClass::key_left(){
@@ -49,9 +50,9 @@ void MainClass::key_left(){
         CombineColumn(1,2);
         CombineColumn(2,3);
     }
+    Key_Pressed();
     emit MatrixChanged();
     emit ColorChanged();
-    Key_Pressed();
 }
 
 void MainClass::key_right(){
@@ -60,9 +61,9 @@ void MainClass::key_right(){
         CombineColumn(2,1);
         CombineColumn(1,0);
     }
+    Key_Pressed();
     emit MatrixChanged();
     emit ColorChanged();
-    Key_Pressed();
 }
 
 void MainClass::CombineRow(int a, int b){
@@ -108,8 +109,6 @@ void MainClass::Add_Number(){
     int count = CountFreeSpace();
     if (count != 0){
         int pos = rand()%count;
-        std::cout<< pos << std::endl ;
-        PrintMatrix();
         count=0;
         for(int i = 0; i<4; i++){
             for(int j = 0; j<4; j++){

@@ -23,6 +23,7 @@ public:
 private:
     int matrix[4][4];
     int counter;
+    bool mouv;
 
     void NewGame();
     void Key_Pressed();
