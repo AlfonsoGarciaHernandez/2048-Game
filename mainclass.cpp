@@ -8,6 +8,7 @@ MainClass::MainClass(QObject *parent) : QObject(parent){
    srand (time(NULL));
    counter = 0;
    NewGame();
+   hol;
 }
 
 void MainClass::NewGame(){
