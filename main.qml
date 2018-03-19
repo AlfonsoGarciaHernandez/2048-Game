@@ -491,7 +491,7 @@ Window {
             MouseArea {
                 id: mouseAreaNG
                 anchors.fill: parent
-                onClicked: vueObjectQML.New_Game();
+
             }
         }
 
@@ -517,7 +517,7 @@ Window {
             MouseArea {
                 id: mouseAreaE
                 anchors.fill: parent
-                onClicked: vueObjectQML.Exit();
+
             }
             anchors.rightMargin: 20
             border.width: 2
