@@ -10,7 +10,6 @@ class MainClass : public QObject
     Q_PROPERTY(QList<QString> box READ ReadMatrix NOTIFY MatrixChanged)
     Q_PROPERTY(QList<QString> color READ ReadColor NOTIFY ColorChanged)
 
-
 public:
     explicit MainClass(QObject *parent = nullptr);
     Q_INVOKABLE void key_up();
@@ -28,8 +27,6 @@ private:
 
     void NewGame();
     void Key_Pressed();
-    void CombineColumn(int a, int b);
-    void CombineRow(int a, int b);
     int CountFreeSpace();
     void Add_Number();
     void PrintMatrix();
@@ -37,6 +34,7 @@ private:
 signals:
     void MatrixChanged();
     void ColorChanged();
+
 public slots:
 
 };
