@@ -10,12 +10,14 @@ class MainClass : public QObject
     Q_PROPERTY(QList<QString> box READ ReadMatrix NOTIFY MatrixChanged)
     Q_PROPERTY(QList<QString> color READ ReadColor NOTIFY ColorChanged)
 
+
 public:
     explicit MainClass(QObject *parent = nullptr);
     Q_INVOKABLE void key_up();
     Q_INVOKABLE void key_down();
     Q_INVOKABLE void key_left();
     Q_INVOKABLE void key_right();
+
 
     QList<QString> ReadMatrix();
     QList<QString> ReadColor();

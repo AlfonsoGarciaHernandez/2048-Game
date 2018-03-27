@@ -9,6 +9,7 @@ MainClass::MainClass(QObject *parent) : QObject(parent){
    counter = 0;
    mouv = false;
    NewGame();
+   hol;
 }
 
 void MainClass::NewGame(){
