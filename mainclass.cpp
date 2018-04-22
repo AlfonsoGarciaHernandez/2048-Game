@@ -23,10 +23,29 @@ void MainClass::NewGame(){
 }
 
 void MainClass::key_up(){
-    for (int times=0;times<4;times++){
-        CombineRow(0,1);
-        CombineRow(1,2);
-        CombineRow(2,3);
+    for (int i=0; i<3 ;i++){
+        for (int j=0; j<4 ;j++){
+            if (matrix[i][j] == 0){
+                matrix[i][j] = matrix[i+1][j];
+                matrix[i+1][j] = 0 ;
+            }
+        }
+    }
+    for (int i=0; i<3 ;i++){
+        for (int j=0; j<4 ;j++){
+            if (matrix[i][j] == matrix[i+1][j]){
+                matrix[i][j] = matrix[i][j]+matrix[i+1][j];
+                matrix[i+1][j] = 0 ;
+            }
+        }
+    }
+    for (int i=0; i<3 ;i++){
+        for (int j=0; j<4 ;j++){
+            if (matrix[i][j] == 0){
+                matrix[i][j] = matrix[i+1][j];
+                matrix[i+1][j] = 0 ;
+            }
+        }
     }
     Key_Pressed();
     emit MatrixChanged();
@@ -34,21 +53,29 @@ void MainClass::key_up(){
 }
 
 void MainClass::key_down(){
-    for (int times=0;times<4;times++){
-        CombineRow(3,2);
-        CombineRow(2,1);
-        CombineRow(1,0);
+    for (int i=3; i>0 ;i--){
+        for (int j=0; j<4 ;j++){
+            if (matrix[i][j] == 0){
+                matrix[i][j] = matrix[i-1][j];
+                matrix[i-1][j] = 0 ;
+            }
+        }
     }
-    Key_Pressed();
-    emit MatrixChanged();
-    emit ColorChanged();
-}
-
-void MainClass::key_left(){
-    for (int times=0;times<4;times++){
-        CombineColumn(0,1);
-        CombineColumn(1,2);
-        CombineColumn(2,3);
+    for (int i=3; i>0 ;i--){
+        for (int j=0; j<4 ;j++){
+            if (matrix[i][j] == matrix[i-1][j]){
+                matrix[i][j] = matrix[i][j]+matrix[i-1][j];
+                matrix[i-1][j] = 0 ;
+            }
+        }
+    }
+    for (int i=3; i>0 ;i--){
+        for (int j=0; j<4 ;j++){
+            if (matrix[i][j] == 0){
+                matrix[i][j] = matrix[i-1][j];
+                matrix[i-1][j] = 0 ;
+            }
+        }
     }
     Key_Pressed();
     emit MatrixChanged();
@@ -56,36 +83,63 @@ void MainClass::key_left(){
 }
 
 void MainClass::key_right(){
-    for (int times=0;times<4;times++){
-        CombineColumn(3,2);
-        CombineColumn(2,1);
-        CombineColumn(1,0);
+    for (int i=3; i>0 ;i--){
+        for (int j=0; j<4 ;j++){
+            if (matrix[j][i] == 0){
+                matrix[j][i] = matrix[j][i-1];
+                matrix[j][i-1] = 0 ;
+            }
+        }
+    }
+    for (int i=3; i>0 ;i--){
+        for (int j=0; j<4 ;j++){
+            if (matrix[j][i] == matrix[j][i-1]){
+                matrix[j][i] = matrix[j][i]+matrix[j][i-1];
+                matrix[j][i-1] = 0 ;
+            }
+        }
+    }
+    for (int i=3; i>0 ;i--){
+        for (int j=0; j<4 ;j++){
+            if (matrix[j][i] == 0){
+                matrix[j][i] = matrix[j][i-1];
+                matrix[j][i-1] = 0 ;
+            }
+        }
     }
     Key_Pressed();
     emit MatrixChanged();
     emit ColorChanged();
 }
 
-void MainClass::CombineRow(int a, int b){
-    for(int j = 0; j<4; j++){
-        if ( matrix[b][j] != 0 ){
-            if (matrix [a][j] == matrix[b][j] || matrix [a][j] == 0){
-                matrix[a][j] += matrix [b][j];
-                matrix[b][j] = 0;
+void MainClass::key_left(){
+    for (int i=0; i<3 ;i++){
+        for (int j=0; j<4 ;j++){
+            if (matrix[j][i] == 0){
+                matrix[j][i] = matrix[j][i+1];
+                matrix[j][i+1] = 0 ;
             }
         }
     }
-}
-
-void MainClass::CombineColumn(int a, int b){
-    for(int i = 0; i<4; i++){
-        if ( matrix[i][b] != 0 ){
-            if (matrix [i][a] == matrix[i][b] || matrix [i][a] == 0){
-                matrix[i][a] += matrix [i][b];
-                matrix[i][b] = 0;
+    for (int i=0; i<3 ;i++){
+        for (int j=0; j<4 ;j++){
+            if (matrix[j][i] == matrix[j][i+1]){
+                matrix[j][i] = matrix[j][i]+matrix[j][i+1];
+                matrix[j][i+1] = 0 ;
             }
         }
     }
+    for (int i=0; i<3 ;i++){
+        for (int j=0; j<4 ;j++){
+            if (matrix[j][i] == 0){
+                matrix[j][i] = matrix[j][i+1];
+                matrix[j][i+1] = 0 ;
+            }
+        }
+    }
+    emit MatrixChanged();
+    emit ColorChanged();
+    Key_Pressed();
 }
 
 void MainClass::Key_Pressed(){

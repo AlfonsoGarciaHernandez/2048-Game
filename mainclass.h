@@ -27,8 +27,6 @@ private:
 
     void NewGame();
     void Key_Pressed();
-    void CombineColumn(int a, int b);
-    void CombineRow(int a, int b);
     int CountFreeSpace();
     void Add_Number();
     void PrintMatrix();
