@@ -6,7 +6,6 @@
 
 MainClass::MainClass(QObject *parent) : QObject(parent){
    srand (time(NULL));
-   counter = 0;
    mouv = false;
    NewGame();
 }
@@ -20,6 +19,26 @@ void MainClass::NewGame(){
         }
     }
     Add_Number();
+}
+
+bool MainClass::EndGame(){
+    for(int i = 0; i<4; i++){
+        for(int j = 0; j<4; j++){
+            if (i-1>0){
+                if (matrix[i][j] == matrix[i-1][j]){return false;}
+            }
+            if (j-1>0){
+                if (matrix[i][j] == matrix[i][j-1]){return false;}
+            }
+            if (i+1<4){
+                if (matrix[i][j] == matrix[i+1][j]){return false;}
+            }
+            if (j+1<4){
+                if (matrix[i][j] == matrix[i][j+1]){return false;}
+            }
+        }
+    }
+    return true;
 }
 
 void MainClass::key_up(){
@@ -144,6 +163,9 @@ void MainClass::key_left(){
 
 void MainClass::Key_Pressed(){
     Add_Number();
+    if (EndGame()){
+    //Game Lost
+    }
 }
 
 int MainClass::CountFreeSpace(){

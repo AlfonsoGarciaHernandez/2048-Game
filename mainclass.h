@@ -28,6 +28,7 @@ private:
     void NewGame();
     void Key_Pressed();
     int CountFreeSpace();
+    bool EndGame();
     void Add_Number();
     void PrintMatrix();
 
