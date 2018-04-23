@@ -1,6 +1,8 @@
 import QtQuick 2.9
 import QtQuick.Window 2.2
 import QtGraphicalEffects 1.0
+import QtQuick.Controls 2.1
+
 
 Window {
     id: window
@@ -460,51 +462,22 @@ Window {
             font.pixelSize: 50
         }
 
-        Rectangle {
-            id: rectnewgame
-            y: 183
-            height: 50
-            color: "#797979"
-            border.color: "#797979"
-            border.width: 2
-            anchors.right: rectgame.left
-            anchors.rightMargin: 20
-            anchors.left: parent.left
-            anchors.leftMargin: 20
 
-            Text {
-                id: newgame
-                color: "#ffffff"
-                text: qsTr("New Game")
-                anchors.rightMargin: 0
-                anchors.bottomMargin: 0
-                anchors.leftMargin: 0
-                anchors.topMargin: 0
-                font.family: "MS Shell Dlg 2"
-                font.bold: true
-                anchors.fill: parent
-                verticalAlignment: Text.AlignVCenter
-                horizontalAlignment: Text.AlignHCenter
-                font.pixelSize: 20
-            }
-
-            MouseArea {
-                id: mouseAreaNG
-                anchors.fill: parent
-            }
-        }
-
-        Rectangle {
-            id: rectexit
+        Button{
+            id: buttonexit
             x: -2
+            y: 269
             height: 50
-            color: "#797979"
             anchors.top: rectnewgame.top
             anchors.topMargin: 100
             Text {
                 id: exit
                 color: "#ffffff"
                 text: qsTr("Exit")
+                anchors.rightMargin: 0
+                anchors.bottomMargin: 0
+                anchors.leftMargin: 0
+                anchors.topMargin: 0
                 horizontalAlignment: Text.AlignHCenter
                 font.family: "MS Shell Dlg 2"
                 font.pixelSize: 20
@@ -512,17 +485,41 @@ Window {
                 anchors.fill: parent
                 verticalAlignment: Text.AlignVCenter
             }
-
-            MouseArea {
-                id: mouseAreaE
-                anchors.fill: parent
+            onClicked: {
+                Qt.quit()
             }
             anchors.rightMargin: 20
-            border.width: 2
-            border.color: "#797979"
             anchors.left: parent.left
             anchors.leftMargin: 20
             anchors.right: rectgame.left
+
+        }
+
+        Button {
+            id: buttonexit1
+            x: -5
+            y: 163
+            height: 50
+            Text {
+                id: exit1
+                color: "#ffffff"
+                text: qsTr("New Game")
+                anchors.fill: parent
+                font.family: "MS Shell Dlg 2"
+                font.pixelSize: 20
+                font.bold: true
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+            }
+            anchors.topMargin: 100
+            anchors.left: parent.left
+            anchors.rightMargin: 20
+            anchors.right: rectgame.left
+            anchors.leftMargin: 20
+            anchors.top: rectnewgame.top
+            onClicked: {
+                vueObjectQML.newGame()
+            }
         }
     }
 }

@@ -16,6 +16,7 @@ public:
     Q_INVOKABLE void key_down();
     Q_INVOKABLE void key_left();
     Q_INVOKABLE void key_right();
+    Q_INVOKABLE void newGame();
 
     QList<QString> ReadMatrix();
     QList<QString> ReadColor();
@@ -25,12 +26,13 @@ private:
     int counter;
     bool mouv;
 
-    void NewGame();
+
     void Key_Pressed();
     int CountFreeSpace();
     bool EndGame();
     void Add_Number();
     void PrintMatrix();
+    void ResetGame();
 
 signals:
     void MatrixChanged();

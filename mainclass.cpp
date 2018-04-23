@@ -7,18 +7,19 @@
 MainClass::MainClass(QObject *parent) : QObject(parent){
    srand (time(NULL));
    mouv = false;
-   NewGame();
+   newGame();
 }
 
-void MainClass::NewGame(){
+void MainClass::newGame(){
     for(int i = 0; i<4; i++){
         for(int j = 0; j<4; j++){
             matrix[i][j]=0;
-            emit MatrixChanged();
-            emit ColorChanged();
+
         }
     }
     Add_Number();
+    emit MatrixChanged();
+    emit ColorChanged();
 }
 
 bool MainClass::EndGame(){
@@ -273,3 +274,5 @@ void MainClass::PrintMatrix(){
         std::cout<< std::endl;
     }
 }
+
+
