@@ -67,6 +67,14 @@ void MainClass::key_up(){
             }
         }
     }
+    for (int i=0; i<3 ;i++){
+        for (int j=0; j<4 ;j++){
+            if (matrix[i][j] == 0){
+                matrix[i][j] = matrix[i+1][j];
+                matrix[i+1][j] = 0 ;
+            }
+        }
+    }
     Key_Pressed();
     emit MatrixChanged();
     emit ColorChanged();
@@ -85,6 +93,14 @@ void MainClass::key_down(){
         for (int j=0; j<4 ;j++){
             if (matrix[i][j] == matrix[i-1][j]){
                 matrix[i][j] = matrix[i][j]+matrix[i-1][j];
+                matrix[i-1][j] = 0 ;
+            }
+        }
+    }
+    for (int i=3; i>0 ;i--){
+        for (int j=0; j<4 ;j++){
+            if (matrix[i][j] == 0){
+                matrix[i][j] = matrix[i-1][j];
                 matrix[i-1][j] = 0 ;
             }
         }
@@ -127,6 +143,14 @@ void MainClass::key_right(){
             }
         }
     }
+    for (int i=3; i>0 ;i--){
+        for (int j=0; j<4 ;j++){
+            if (matrix[j][i] == 0){
+                matrix[j][i] = matrix[j][i-1];
+                matrix[j][i-1] = 0 ;
+            }
+        }
+    }
     Key_Pressed();
     emit MatrixChanged();
     emit ColorChanged();
@@ -145,6 +169,14 @@ void MainClass::key_left(){
         for (int j=0; j<4 ;j++){
             if (matrix[j][i] == matrix[j][i+1]){
                 matrix[j][i] = matrix[j][i]+matrix[j][i+1];
+                matrix[j][i+1] = 0 ;
+            }
+        }
+    }
+    for (int i=0; i<3 ;i++){
+        for (int j=0; j<4 ;j++){
+            if (matrix[j][i] == 0){
+                matrix[j][i] = matrix[j][i+1];
                 matrix[j][i+1] = 0 ;
             }
         }

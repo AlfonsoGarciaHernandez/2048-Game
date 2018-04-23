@@ -468,7 +468,6 @@ Window {
             x: -2
             y: 269
             height: 50
-            anchors.top: rectnewgame.top
             anchors.topMargin: 100
             Text {
                 id: exit
@@ -516,7 +515,6 @@ Window {
             anchors.rightMargin: 20
             anchors.right: rectgame.left
             anchors.leftMargin: 20
-            anchors.top: rectnewgame.top
             onClicked: {
                 vueObjectQML.newGame()
             }
